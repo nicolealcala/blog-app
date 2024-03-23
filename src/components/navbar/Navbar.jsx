@@ -10,7 +10,7 @@ const Navbar = () => {
           Blob
         </Link>
         <button
-          class="navbar-toggler me-3"
+          className="navbar-toggler me-3"
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasNavbar"
@@ -18,26 +18,28 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
         <div
-          class="offcanvas offcanvas-end linksDiv"
-          tabindex="-1"
+          className="offcanvas offcanvas-end linksDiv"
+          tabIndex="-1"
           id="offcanvasNavbar"
           aria-labelledby="offcanvasNavbarLabel"
         >
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-              Blob
-            </h5>
+          <div className="offcanvas-header">
+            <Link href="/">
+              <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
+                Blob
+              </h5>
+            </Link>
             <button
               type="button"
-              class="btn-close"
+              className="btn-close"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
             ></button>
           </div>
-          <div class="offcanvas-body justify-content-end">
+          <div className="offcanvas-body justify-content-end">
             <Links />
           </div>
         </div>

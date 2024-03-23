@@ -1,10 +1,11 @@
 :root {
-    --bg: #0d0c22;
-    --bgMid: #645ff1;
-    --bgSoft: #2d2a3f;
-    ---text: white;
-    --textSoft: #e5e5e5;
-    --btn: #3673fd;
+    /* --bg-dark: #13081a;
+    --bg-mid: #3673fd; */
+    --bg-dark: #110616;
+    --bg-mid: #f41afd;
+    --bg-soft: #2d2a3f;
+    ---txt-light: white;
+    --txt-soft: #AAA;
 }
 
 * {
@@ -14,12 +15,12 @@
 }
 
 body {
-    background-color: var(--bg) !important;
-    color: var(---text) !important;
+    background-color: var(--bg-dark) !important;
+    color: var(---txt-light) !important;
 }
 
 .container {
-    background-color: var(--bgSoft);
+    /* background-color: var(--bg-soft); */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -27,6 +28,18 @@ body {
     width: 100%;
 }
 
-.txt-mid {
-    font-weight: 500 !important;
+.txt-color-mid {
+    color: var(--bg-mid)
+}
+
+.txt-color-soft {
+    color: var(--txt-soft);
+}
+
+.txt-weight-mid {
+    font-weight: 600;
+}
+
+.txt-size-small {
+    font-size: 12px;
 }

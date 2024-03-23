@@ -1,5 +1,5 @@
 .navbar-brand {
-    color: var(---text) !important;
+    color: var(---txt-light) !important;
     font-weight: 700;
     font-size: 1.5rem !important;
 }
@@ -15,15 +15,15 @@
 }
 
 .nav-link.active {
-    background-color: var(---text);
+    background-color: var(---txt-light);
 
-    color: var(--bg) !important;
+    color: var(--bg-dark) !important;
 }
 
 @media screen and (max-width: 991px) {
     .linkDiv {
         margin: 0;
-        background-color: var(--bgSoft);
+        background-color: var(--bg-dark-soft);
     }
 
     .nav-link {
