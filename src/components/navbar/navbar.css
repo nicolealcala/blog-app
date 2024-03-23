@@ -1,0 +1,38 @@
+.navbar-brand {
+    color: var(---text) !important;
+    font-weight: 700;
+    font-size: 1.5rem !important;
+}
+
+.linkDiv {
+    gap: 1rem;
+}
+
+.nav-link {
+    padding: 8px 20px !important;
+    border-radius: 30px;
+    font-weight: 500 !important;
+}
+
+.nav-link.active {
+    background-color: var(---text);
+
+    color: var(--bg) !important;
+}
+
+@media screen and (max-width: 991px) {
+    .linkDiv {
+        margin: 0;
+        background-color: var(--bgSoft);
+    }
+
+    .nav-link {
+        margin-block: 0.5rem;
+    }
+
+    .nav-link.active {
+        background-color: var(--bgMid);
+        border-radius: 0;
+        color: var(---textSoft) !important;
+    }
+}
