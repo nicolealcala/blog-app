@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg " data-bs-theme="dark">
       <div className="container-fluid px-0 pt-2">
         <Link className="navbar-brand ms-3" href="/">
-          Blob
+          dreamlabs
         </Link>
         <button
           className="navbar-toggler me-3"
@@ -29,7 +29,7 @@ const Navbar = () => {
           <div className="offcanvas-header">
             <Link href="/">
               <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-                Blob
+                dreamlabs
               </h5>
             </Link>
             <button

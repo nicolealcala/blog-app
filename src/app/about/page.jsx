@@ -1,5 +1,4 @@
 import Image from "next/image";
-import "./about.css";
 
 const About = () => {
   return (
@@ -27,27 +26,27 @@ const About = () => {
         </div>
         <div className="row mx-0">
           <div className="col-4">
-            <h1 className="txt-color-mid txt-weight-mid">20+</h1>
-            <p>Years of experience</p>
+            <h1 className="txt-color-mid txt-weight-mid">50+</h1>
+            <p>Partner companies</p>
           </div>
           <div className="col-4">
             <h1 className="txt-color-mid txt-weight-mid">1000+</h1>
-            <p>Compeleted projects</p>
+            <p>Community members</p>
           </div>
           <div className="col-4">
             <h1 className="txt-color-mid txt-weight-mid">2000+</h1>
-            <p>Happy customers</p>
+            <p>Creative inspirations</p>
           </div>
         </div>
       </div>
       <div className="col-lg-6 d-flex justify-content-center align-items-center">
-        <div className="imgContainer">
+        <div className="img-container">
           <a href="https://storyset.com/work" target="_blank">
             <Image
-              src="/about1.png"
+              src="/about.png"
               alt="About Image"
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
+              className="img-contain"
             />
           </a>
         </div>
