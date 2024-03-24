@@ -4,8 +4,15 @@
     font-size: 1.5rem !important;
 }
 
-.linkDiv {
-    gap: 1rem;
+#logo::after {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: var(--bg-mid);
+    border-radius: 50%;
+    margin-left: 5px;
+    position: relative;
 }
 
 .nav-link {
@@ -21,18 +28,14 @@
 }
 
 @media screen and (max-width: 991px) {
-    .linkDiv {
-        margin: 0;
-        background-color: var(--bg-dark-soft);
-    }
 
     .nav-link {
         margin-block: 0.5rem;
     }
 
     .nav-link.active {
-        background-color: var(--bgMid);
-        border-radius: 0;
-        color: var(---textSoft) !important;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        color: var(--bg-mid) !important;
     }
 }

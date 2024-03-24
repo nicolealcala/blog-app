@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg " data-bs-theme="dark">
       <div className="container-fluid px-0 pt-2">
         <Link className="navbar-brand ms-3" href="/">
-          dreamlabs
+          <span id="logo">dreamlabs</span>
         </Link>
         <button
           className="navbar-toggler me-3"
@@ -27,9 +27,9 @@ const Navbar = () => {
           aria-labelledby="offcanvasNavbarLabel"
         >
           <div className="offcanvas-header">
-            <Link href="/">
+            <Link href="/" className="navbar-brand">
               <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-                dreamlabs
+                <span id="logo">dreamlabs</span>
               </h5>
             </Link>
             <button
