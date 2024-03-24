@@ -4,15 +4,15 @@ import Image from "next/image";
 const Home = () => {
   return (
     <div className="row mx-0">
-      <div className="col-lg-6 d-flex flex-column justify-content-center align-items-start gap-4">
+      <div className="col-lg-6 d-flex flex-column justify-content-center align-items-start py-5 gap-4">
         <h1>
-          <strong className="txt-size-large">DreamLabs Avenue.</strong>
+          <strong className="txt-size-large">DreamLabs Agency.</strong>
         </h1>
-        <p>
+        <p style={{ width: "90%" }}>
           Where Creativity Meets Community! Join us on a journey of inspiration
-          and collaboration, where designers and aspiring creators unite to
-          share ideas, foster innovation, and cultivate a vibrant, supportive
-          network.
+          and collaboration, where designers, developers, and aspiring creators
+          unite to share ideas, foster innovation, and cultivate a vibrant,
+          supportive network.
         </p>
 
         <div className="py-2">
@@ -32,8 +32,8 @@ const Home = () => {
           />
         </div>
       </div>
-      <div className="col-lg-6 d-flex justify-content-center">
-        <a href="https://storyset.com/team" target="_blank">
+      <div className="col-lg-6 d-none d-lg-flex justify-content-center align-items-center">
+        <a href="https://storyset.com/people" target="_blank">
           <div className="img-container">
             <Image
               src="/home.png"
