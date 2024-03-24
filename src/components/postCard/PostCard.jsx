@@ -4,7 +4,7 @@ import "./postcard.css";
 const PostCard = () => {
   return (
     <div className="postCard">
-      <dv className="top">
+      <div className="top">
         <div className="imgContainer order-1">
           <Image
             src="/noavatar.png"
@@ -14,7 +14,7 @@ const PostCard = () => {
           />
         </div>
         <span className="postDate order-2">03.23.24</span>
-      </dv>
+      </div>
       <div className="bottom">
         <h5 className="title">Title</h5>
         <p className="desc">description</p>
