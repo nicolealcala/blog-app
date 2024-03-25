@@ -28,6 +28,7 @@ const Home = () => {
             src="/brands.png"
             alt="Brands"
             fill
+            sizes="100vw"
             className="brands img-contain"
           />
         </div>
@@ -39,6 +40,7 @@ const Home = () => {
               src="/home.png"
               alt="Home-Img"
               fill
+              sizes="100vw"
               className="img-contain"
             />
           </div>

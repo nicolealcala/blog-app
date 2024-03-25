@@ -24,6 +24,7 @@ const BlogPost = () => {
               src="/noavatar.png"
               alt="Author Image"
               fill
+              sizes="100vw"
               className="img-cover"
             />
           </div>

@@ -10,6 +10,7 @@ const PostCard = () => {
             src="/noavatar.png"
             alt="Post-Img"
             fill
+            sizes="100vw"
             className="img-cover"
           />
         </div>

@@ -48,6 +48,7 @@ const About = () => {
               src="/about.png"
               alt="About Image"
               fill
+              sizes="100vw"
               className="img-contain"
             />
           </a>
