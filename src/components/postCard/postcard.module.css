@@ -1,8 +1,7 @@
-.postCard {
+.card {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-bottom: 20px;
 }
 
 .top {
@@ -15,11 +14,7 @@
     position: relative;
 }
 
-.img {
-    object-fit: cover;
-}
-
-.postDate {
+.date {
     width: 10%;
     transform: rotate(-90deg);
     margin: auto;
@@ -35,7 +30,7 @@
     width: 90%;
     margin-bottom: 20px;
     font-weight: 300;
-    color: gray;
+    color: var(--txt-soft);
 }
 
 .link {
