@@ -17,7 +17,7 @@ const Home = () => {
 
         <div className="py-2">
           <Link href="/about" className="primary-btn me-3">
-            Learn More
+            Learn more
           </Link>
           <Link href="/contact" className="secondary-btn ms-2">
             Contact
