@@ -1,5 +1,9 @@
 import Image from "next/image";
 
+export const metadata = {
+  title: "Contact",
+  description: "Next.js starter app",
+};
 const Contact = () => {
   return (
     <div className="row mx-0">

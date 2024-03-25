@@ -7,8 +7,11 @@ import BootstrapClient from "@/components/BootstrapClient"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Next App',
-  description: 'Next.js starter app',
+  title: {
+    default: "DreamLabs",
+    template: "%s | DreamLabs"
+  },
+  description: 'DreamLabs official page',
 }
 
 export default function RootLayout({ children }) {
