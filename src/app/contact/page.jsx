@@ -28,13 +28,23 @@ const Contact = () => {
               <label htmlFor="fName" className="text-muted">
                 First Name
               </label>
-              <input type="text" className="form-control" id="fName" required />
+              <input
+                type="text"
+                className="form-control"
+                name="fName"
+                required
+              />
             </div>
             <div className="col-md-6 mb-2">
               <label htmlFor="lName" className="text-muted">
                 Last Name
               </label>
-              <input type="text" className="form-control" id="lName" required />
+              <input
+                type="text"
+                className="form-control"
+                name="lName"
+                required
+              />
             </div>
             <div className="col-12 mb-2">
               <label htmlFor="contact" className="text-muted">
@@ -45,7 +55,7 @@ const Contact = () => {
                 maxLength={11}
                 className="form-control"
                 placeholder="09XXXXXXXXX"
-                id="contact"
+                name="contact"
               />
             </div>
             <div className="col-12 mb-2">
@@ -57,17 +67,17 @@ const Contact = () => {
                 maxLength={50}
                 className="form-control"
                 placeholder="example@example.com"
-                id="email"
+                name="email"
                 required
               />
             </div>
             <div className="col-12 mb-2">
-              <label htmlFor="email" className="text-muted">
+              <label htmlFor="message" className="text-muted">
                 Message
               </label>
               <textarea
                 className="form-control"
-                id="exampleFormControlTextarea1"
+                name="message"
                 rows="8"
                 required
               ></textarea>
