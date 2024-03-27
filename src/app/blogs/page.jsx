@@ -4,7 +4,7 @@ import { getBlogs } from "@/lib/data";
 // FETCH DATA WITH AN API
 // const getPosts = async () => {
 //   try {
-//     const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+//     const res = await fetch("http://localhost:3000/api/blogs");
 //     if (!res.ok) {
 //       throw new Error(`Network response failed. Status ${res.status}`);
 //     }
@@ -13,6 +13,7 @@ import { getBlogs } from "@/lib/data";
 //     console.log("Something went wrong");
 //   }
 // };
+
 export const metadata = {
   title: "Blogs",
   description: "DreamLabs complete blog posts.",
@@ -20,7 +21,7 @@ export const metadata = {
 
 const Blogs = async () => {
   // FETCH DATA WITH AN API
-  // const posts = await getPosts();
+  // const blogs = await getPosts();
 
   // FETCH DATA WITHOUT AN API
   const blogs = await getBlogs();

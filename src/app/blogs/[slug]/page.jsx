@@ -15,6 +15,7 @@ export const dynamicMetadata = async ({ params }) => {
     desc: blog.content,
   };
 };
+
 const BlogPost = async ({ params }) => {
   const { slug } = params;
 

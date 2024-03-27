@@ -21,7 +21,9 @@ const Contact = () => {
         </div>
       </div>
       <div className="col-lg-6 d-flex flex-column justify-content-center align-items-center py-5">
-        <h3 className="mb-4 d-lg-none txt-color-mid">Contact Us</h3>
+        <h3 className="mb-4 d-lg-none txt-color-mid txt-weight-mid">
+          Contact Us
+        </h3>
         <form action="" data-bs-theme="dark">
           <div className="row mx-0">
             <div className="col-md-6 mb-2">
@@ -83,7 +85,7 @@ const Contact = () => {
               ></textarea>
             </div>
             <div className="col-12 my-2">
-              <button type="submit" className="primary-btn">
+              <button type="submit" className="btns primary-btn">
                 Send message
               </button>
             </div>
