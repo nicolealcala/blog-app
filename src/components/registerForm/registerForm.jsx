@@ -4,20 +4,22 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useFormState } from "react-dom";
-import Swal from "sweetalert2";
 
 const RegisterForm = () => {
-  const [state, setState] = useFormState(register, undefined);
+  const [registrationState, setRegistrationState] = useFormState(
+    register,
+    undefined
+  );
 
   const router = useRouter();
 
   useEffect(() => {
-    state?.success && router.push("/login");
-  }, [state?.success, router]);
+    registrationState?.success && router.push("/login");
+  }, [registrationState?.success, router]);
 
   return (
     <form
-      action={setState}
+      action={setRegistrationState}
       data-bs-theme="dark"
       className="bg-dark pt-5 pb-4 px-4 rounded-4 align-self-center"
       style={{ maxWidth: "500px" }}
@@ -37,9 +39,9 @@ const RegisterForm = () => {
             name="username"
             required
           />
-          {state?.unError && (
+          {registrationState?.unError && (
             <p className="mt-2 mb-0 txt-size-small text-danger">
-              {state?.unError}
+              {registrationState?.unError}
             </p>
           )}
         </div>
@@ -72,9 +74,9 @@ const RegisterForm = () => {
             name="cpassword"
             required
           />
-          {state?.pwError && (
+          {registrationState?.pwError && (
             <p className="mt-2 mb-0 txt-size-small text-danger">
-              {state?.pwError}
+              {registrationState?.pwError}
             </p>
           )}
         </div>
