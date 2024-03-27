@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="row mx-0 py-4">
+    <div className="row mx-0 pb-4">
       <div className="col-md-6 txt-size-small txt-weight-mid text-md-start text-center">
         <a
           href="https://nicolealcala.github.io/"

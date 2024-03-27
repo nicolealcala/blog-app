@@ -27,6 +27,15 @@
     color: var(--bg-dark) !important;
 }
 
+#logOut {
+    background-color: transparent;
+    color: var(--txt-light);
+    border-radius: 8px;
+    border: none;
+    padding-inline: 20px;
+    height: 100%;
+}
+
 @media screen and (max-width: 991px) {
 
     .nav-link {

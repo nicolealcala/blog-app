@@ -1,8 +1,8 @@
-"use client";
 import Link from "next/link";
 import Links from "./Links";
 import "./navbar.css";
-const Navbar = () => {
+
+const Navbar = async () => {
   return (
     <nav className="navbar navbar-expand-lg " data-bs-theme="dark">
       <div className="container-fluid px-0 pt-2">
@@ -28,7 +28,10 @@ const Navbar = () => {
         >
           <div className="offcanvas-header">
             <Link href="/" className="navbar-brand">
-              <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
+              <h5
+                className="offcanvas-title txt-weight-mid"
+                id="offcanvasNavbarLabel"
+              >
                 <span id="logo">dreamlabs</span>
               </h5>
             </Link>

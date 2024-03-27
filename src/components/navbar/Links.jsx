@@ -1,6 +1,7 @@
-import Link from "next/link";
 import NavLink from "./NavLink";
+import { logout } from "@/lib/actions";
 import "./navbar.css";
+import { auth } from "@/lib/auth";
 
 const links = [
   { path: "/", title: "Home" },
@@ -9,9 +10,9 @@ const links = [
   { path: "/blogs", title: "Blogs" },
 ];
 
-const Links = () => {
+const Links = async () => {
   // TEMPORARY
-  const session = true;
+  const session = await auth();
   const isAdmin = true;
 
   return (
@@ -19,14 +20,24 @@ const Links = () => {
       {links.map((link) => (
         <NavLink item={link} key={link.path} />
       ))}
-      {session ? (
+
+      {session?.user ? (
         <>
-          {isAdmin && <NavLink item={{ path: "/admin", title: "Admin" }} />}
+          {session.user?.isAdmin && (
+            <NavLink item={{ path: "/admin", title: "Admin" }} />
+          )}
+
           <hr className="d-lg-none" />
-          <NavLink item={{ path: "/login", title: "Log out" }} />
+
+          <form action={logout}>
+            <button id="logOut" className="txt-weight-mid">
+              Log out
+            </button>
+          </form>
         </>
       ) : (
         <>
+          <hr className="d-lg-none" />
           <NavLink item={{ path: "/login", title: "Log in" }} />
         </>
       )}
