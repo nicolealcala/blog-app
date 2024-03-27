@@ -3,10 +3,10 @@ import Image from "next/image";
 
 const Home = () => {
   return (
-    <div className="row mx-0">
-      <div className="col-lg-6 d-flex flex-column justify-content-center align-items-start py-5 gap-4">
+    <div className="row mx-0 py-5">
+      <div className="col-lg-6 d-flex flex-column justify-content-center align-items-start gap-3">
         <h1>
-          <strong className="txt-size-large">DreamLabs Agency.</strong>
+          <strong className="txt-size-large">Your Idea in Motion.</strong>
         </h1>
         <p style={{ width: "90%" }}>
           Where Creativity Meets Community! Join us on a journey of inspiration
@@ -16,10 +16,10 @@ const Home = () => {
         </p>
 
         <div className="py-2">
-          <Link href="/about" className="primary-btn me-3">
+          <Link href="/about" className="btns primary-btn me-3">
             Learn more
           </Link>
-          <Link href="/contact" className="secondary-btn ms-2">
+          <Link href="/contact" className="btns secondary-btn ms-2">
             Contact
           </Link>
         </div>
