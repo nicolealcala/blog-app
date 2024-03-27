@@ -33,7 +33,7 @@ const About = () => {
         <div className="row mx-0">
           <div className="col-4">
             <h1 className="txt-color-mid txt-weight-mid">50+</h1>
-            <p>Partner companies</p>
+            <p>Collab buddies</p>
           </div>
           <div className="col-4">
             <h1 className="txt-color-mid txt-weight-mid">4k+</h1>
