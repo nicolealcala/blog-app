@@ -8,6 +8,6 @@ export const GET = async (req) => {
         const blogs = Blog.find();
         return NextResponse.json(blogs);
     } catch (err) {
-        throw new Error('Failed tof fetch posts.')
+        throw new Error('Failed to fetch posts.')
     }
 }
