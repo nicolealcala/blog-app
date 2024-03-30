@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     password: { type: String },
     img: { type: String, default: "/noavatar.png" },
     isAdmin: { type: Boolean, default: false }
-}, { timeStamps: true });
+}, { timestamps: true });
 
 const blogSchema = new mongoose.Schema({
     title: { type: String, required: true },
@@ -14,7 +14,7 @@ const blogSchema = new mongoose.Schema({
     img: { type: String, default: "/blog.png" },
     userId: { type: String, requireD: true, },
     slug: { type: String, requireD: true, unique: true }
-}, { timeStamps: true });
+}, { timestamps: true });
 
 export const User = mongoose.models.User || mongoose.model('User', userSchema);
 export const Blog = mongoose.models.Blog || mongoose.model('Blog', blogSchema);

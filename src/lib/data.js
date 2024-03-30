@@ -1,6 +1,7 @@
 import { connectToDb } from "./utils";
 import { Blog, User } from "./models";
 import { unstable_noStore as noStore } from "next/cache";
+import { notFound } from "next/navigation";
 
 export const getBlogs = async () => {
     try {
@@ -19,7 +20,8 @@ export const getBlog = async (blogId) => {
         const blog = await Blog.findOne({ slug: blogId });
         return blog;
     } catch (err) {
-        console.log(err); throw new Error("Fetching post failed.");
+        console.log(err);
+        return notFound;
     }
 }
 
