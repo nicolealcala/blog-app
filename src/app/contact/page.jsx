@@ -24,61 +24,51 @@ const Contact = () => {
         <h3 className="mb-4 d-lg-none txt-color-mid txt-weight-mid">
           Contact Us
         </h3>
-        <form action="" data-bs-theme="dark">
+        <form action="" className="contactForm" data-bs-theme="dark">
           <div className="row mx-0">
             <div className="col-md-6 mb-2">
-              <label htmlFor="fName" className="text-muted">
-                First Name
-              </label>
+              <label htmlFor="fName">First Name</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control border border-secondary text-light"
                 name="fName"
                 required
               />
             </div>
             <div className="col-md-6 mb-2">
-              <label htmlFor="lName" className="text-muted">
-                Last Name
-              </label>
+              <label htmlFor="lName">Last Name</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control border border-secondary text-light"
                 name="lName"
                 required
               />
             </div>
             <div className="col-12 mb-2">
-              <label htmlFor="contact" className="text-muted">
-                Phone Number (optional)
-              </label>
+              <label htmlFor="contact">Phone Number (optional)</label>
               <input
                 type="tel"
                 maxLength={11}
-                className="form-control"
+                className="form-control border border-secondary text-light"
                 placeholder="09XXXXXXXXX"
                 name="contact"
               />
             </div>
             <div className="col-12 mb-2">
-              <label htmlFor="email" className="text-muted">
-                Email
-              </label>
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
                 maxLength={50}
-                className="form-control"
+                className="form-control border border-secondary text-light"
                 placeholder="example@example.com"
                 name="email"
                 required
               />
             </div>
             <div className="col-12 mb-2">
-              <label htmlFor="message" className="text-muted">
-                Message
-              </label>
+              <label htmlFor="message">Message</label>
               <textarea
-                className="form-control"
+                className="form-control border border-secondary text-light"
                 name="message"
                 rows="8"
                 required
