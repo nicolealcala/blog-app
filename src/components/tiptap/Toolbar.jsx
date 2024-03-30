@@ -4,15 +4,14 @@ import {
   Underline,
   List,
   ListOrdered,
-  Heading2,
+  Heading3,
   Quote,
   Undo,
   Redo,
   Code,
-  Strikethrough,
 } from "lucide-react";
 
-const Toolbar = ({ editor, content }) => {
+const Toolbar = ({ editor }) => {
   if (!editor) {
     return null;
   }
@@ -54,28 +53,16 @@ const Toolbar = ({ editor, content }) => {
         <Underline className="toolbarIcon" />
       </button>
 
-      {/* <button
-            onClick={(e) => {
-                e.preventDefault();
-                editor.chain().focus().toggleStrike().run();
-            }}
-            className={`toolbarBtn ${
-                editor.isActive("strike") ? "bg-mid text-light" : "bg-transparent"
-            }`}
-            >
-            <Strikethrough className="toolbarIcon" />
-            </button> */}
-
       <button
         onClick={(e) => {
           e.preventDefault();
-          editor.chain().focus().toggleHeading({ level: 2 }).run();
+          editor.chain().focus().toggleHeading({ level: 3 }).run();
         }}
         className={`toolbarBtn ${
           editor.isActive("heading") ? "bg-mid text-light" : "bg-transparent"
         }`}
       >
-        <Heading2 className="toolbarIcon" />
+        <Heading3 className="toolbarIcon" />
       </button>
 
       <button
