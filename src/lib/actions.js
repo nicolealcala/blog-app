@@ -5,22 +5,23 @@ import { connectToDb } from "./utils";
 import { signIn, signOut } from "./auth";
 import bcrypt from "bcrypt"
 
-export const createMarkup = (content) => {
-    return { __html: content };
-}
-
-export const addBlog = async (title, content, img) => {
-    const slug = title.split(" ").join("-");
-    console.log(title, content, img, slug);
+export const addBlog = async ({ title, content, img, userId }) => {
+    const slug = typeof title === "string" ? title.split(" ").join("-") : "";
+    const noImg = img.trim() ? img : "/blog.png";
+    console.log(title, content, img, userId, slug)
     try {
         connectToDb()
         const newBlog = new Blog({
-            title, content, img, slug
+            title,
+            content,
+            img: noImg,
+            userId,
+            slug
         })
         await newBlog.save();
-
         //In build mode, you cannot see changes immediately because of Next.js caching. To refetch the blogs whenever a new post is deleted:
         revalidatePath("/blogs");
+        return true;
     } catch (err) {
         console.log(err)
         throw new Error(err);
@@ -45,6 +46,21 @@ export const deleteBlog = async (formData) => {
         connectToDb()
         await Blog.findByIdAndDelete(id);
 
+        revalidatePath("/blogs");
+    } catch (err) {
+        console.log(err)
+        throw new Error(err);
+    }
+}
+
+export const deleteUser = async (formData) => {
+    const { id } = Object.fromEntries(formData);
+    try {
+        connectToDb()
+        await Blog.deleteMany({ userId: id })
+        await User.findByIdAndDelete(id);
+
+        revalidatePath("/admin");
         revalidatePath("/blogs");
     } catch (err) {
         console.log(err)

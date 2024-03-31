@@ -17,13 +17,13 @@ const Home = () => {
 
         <div className="py-2">
           <Link href="/about" className="btns primary-btn me-3">
-            Learn more
+            Learn More
           </Link>
           <Link href="/contact" className="btns secondary-btn ms-2">
-            Contact
+            Contact Us
           </Link>
         </div>
-        <div className="col-12 brandsContainer">
+        <div className="col-11 brandsContainer my-3">
           <Image
             src="/brands.png"
             alt="Brands"

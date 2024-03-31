@@ -29,14 +29,22 @@
 }
 
 .link {
+    position: relative;
     text-decoration: none;
-    color: var(--bg-mid)
+    color: var(--bg-mid);
+}
+
+.link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0px;
+    height: 3px;
+    background-color: var(--bg-mid);
+    transition: width 0.2s;
 }
 
 .link:hover::after {
-    content: "";
-    width: auto;
-    margin-top: 5px;
-    height: 2px;
-    background-color: var(--bg-mid);
+    width: 100%;
 }

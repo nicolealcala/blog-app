@@ -1,12 +1,14 @@
 .postImg {
     position: relative;
     width: 100%;
-    height: calc(100vh - 150px);
+    height: 100%;
+    min-height: calc(100vh - 150px);
 }
 
 
 .content {
     padding-inline: 50px;
+
 }
 
 @media screen and (max-width: 768px) {

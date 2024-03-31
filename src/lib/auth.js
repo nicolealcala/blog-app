@@ -9,14 +9,14 @@ import { authConfig } from "./auth.config"
 const credentialsLogIn = async (credentials) => {
     try {
         connectToDb()
-        const existingUser = await User.findOne({ email: credentials.email });
+        const user = await User.findOne({ email: credentials.email });
 
-        if (!existingUser) throw new Error("User not found. Create an accout to continue.")
+        if (!user) throw new Error("User not found. Create an accout to continue.")
 
-        const passwordMatch = await bcrypt.compare(credentials.password, existingUser.password)
+        const passwordMatch = await bcrypt.compare(credentials.password, user.password)
         if (!passwordMatch) throw new Error("Incorrect password.")
 
-        return existingUser;
+        return user;
     } catch (err) {
         console.log(err)
         throw new Error("Failed to log in");
@@ -46,18 +46,18 @@ export const {
         })
     ],
     callbacks: {
-        async signIn({ user, account }) {
+        async signIn({ user, account, profile }) {
 
             if (account.provider === 'github') {
                 connectToDb()
                 try {
-                    const existingAcount = await User.findOne({ email: user.email })
+                    const user = await User.findOne({ email: profile.email })
 
-                    if (!existingAcount) {
+                    if (!user) {
                         const newAccount = new User({
-                            username: user.name,
-                            email: user.email,
-                            img: user.image
+                            username: profile.login,
+                            email: profile.email,
+                            img: profile.avatar_url,
                         })
 
                         await newAccount.save();

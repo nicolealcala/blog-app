@@ -61,6 +61,10 @@
     color: var(--bg-mid);
 }
 
+.offcanvas {
+    width: 280px !important;
+}
+
 @media screen and (max-width: 991px) {
 
     .nav-link {

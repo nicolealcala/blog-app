@@ -1,10 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
-    /* --bg-dark: #13081a;
-    --bg-mid: #3673fd; */
     --bg-dark: #110616;
     --bg-mid: #f41afd;
     --bg-soft: #2d2a3f;
-    ---txt-light: #DEE2E6;
+    --txt-light: #DEE2E6;
     --txt-soft: #909090;
 }
 
@@ -15,12 +15,11 @@
 }
 
 body {
-    background-color: var(--bg-dark) !important;
-    color: var(---txt-light) !important;
+    background: linear-gradient(130deg, rgba(28, 11, 36, 1) 0%, rgba(33, 18, 60, 1) 60%, rgba(62, 30, 64, 1) 100%) !important;
+    color: var(--txt-light) !important;
 }
 
 .container {
-    /* background-color: var(--bg-soft); */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -28,20 +27,20 @@ body {
     width: 100%;
 }
 
-.img-container,
-.brandsContainer {
+.img-container {
     position: relative;
     width: 500px;
     height: 500px;
 }
 
 .brandsContainer {
+    position: relative;
     width: 100%;
     height: 60px;
 }
 
 .brands {
-    filter: grayscale(1);
+    opacity: 0.75;
 }
 
 .img-contain {
@@ -68,6 +67,10 @@ body {
     font-size: 5rem;
 }
 
+.txt-size-mid {
+    font-size: 14px;
+}
+
 .txt-size-small {
     font-size: 12px;
 }
@@ -75,9 +78,9 @@ body {
 .btns {
     border-radius: 10px;
     padding: 10px 15px;
-    color: var(---txt-light);
+    color: var(--txt-light);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.2s linear;
 }
 
 .primary-btn {
@@ -102,6 +105,17 @@ body {
     opacity: 0.7;
 }
 
+#githubBtn {
+    width: 100%;
+    background-color: black;
+    border: none;
+    color: var(--txt-light);
+}
+
+#github:hover {
+    color: var(--bg-mid);
+}
+
 .required::after {
     content: "*";
     color: red;
@@ -116,6 +130,63 @@ body {
 
 .portfolio:hover {
     color: var(--bg-mid);
+}
+
+.inputForm {
+    backdrop-filter: blur(3px) saturate(200%);
+    -webkit-backdrop-filter: blur(3px) saturate(200%);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
+}
+
+.inputForm input,
+.contactForm input,
+.contactForm textarea {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.inputForm input:focus,
+.contactForm input:focus,
+.contactForm textarea:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#addBtn {
+    position: absolute;
+    padding: auto auto;
+    bottom: 30px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    color: var(--bg-dark);
+    font-size: 1.8rem;
+    font-family: "Poppins";
+    font-weight: 500;
+}
+
+.toolbarBtn {
+    color: var(--txt-soft);
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+}
+
+.bg-mid {
+    background-color: var(--bg-mid);
+}
+
+.toolbarIcon {
+    height: 1rem;
+}
+
+.ProseMirror:focus {
+    outline: none;
+}
+
+.tiptap.ProseMirror>p {
+    height: auto;
 }
 
 @media screen and (max-width: 768px) {

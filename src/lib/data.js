@@ -25,6 +25,17 @@ export const getBlog = async (blogId) => {
     }
 }
 
+export const getUserByEmail = async (userEmail) => {
+    noStore();
+    try {
+        connectToDb();
+        const user = await User.findOne({ email: userEmail });
+        return user;
+    } catch (err) {
+        console.log(err); throw new Error("Fetching user failed.");
+    }
+}
+
 export const getUser = async (userId) => {
     noStore();
     try {
@@ -32,7 +43,7 @@ export const getUser = async (userId) => {
         const user = await User.findById(userId);
         return user;
     } catch (err) {
-        console.log(err); throw new Error("Fetching post failed.");
+        console.log(err); throw new Error("Fetching user failed.");
     }
 }
 

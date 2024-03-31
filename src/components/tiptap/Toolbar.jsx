@@ -5,7 +5,7 @@ import {
   List,
   ListOrdered,
   Heading3,
-  Quote,
+  // Quote,
   Undo,
   Redo,
   Code,
@@ -91,9 +91,8 @@ const Toolbar = ({ editor }) => {
         <ListOrdered className="toolbarIcon" />
       </button>
 
-      <button
-        onClick={(e) => {
-          e.preventDefault();
+      {/* <button
+        onClick={(e) => { e.preventDefault()
           editor.chain().focus().toggleBlockquote().run();
         }}
         className={`toolbarBtn ${
@@ -101,12 +100,12 @@ const Toolbar = ({ editor }) => {
         }`}
       >
         <Quote className="toolbarIcon" />
-      </button>
+      </button> */}
 
       <button
         onClick={(e) => {
           e.preventDefault();
-          editor.chain().focus().setCode().run();
+          editor.chain().focus().toggleCode().run();
         }}
         className={`toolbarBtn ${
           editor.isActive("code") ? "bg-mid text-light" : "bg-transparent"
@@ -116,10 +115,8 @@ const Toolbar = ({ editor }) => {
       </button>
 
       <button
-        onClick={(e) => {
-          e.preventDefault();
-          editor.chain().focus().undo().run();
-        }}
+        onClick={() => editor.chain().focus().undo().run()}
+        disabled={!editor.can().chain().focus().undo().run()}
         className={`toolbarBtn ${
           editor.isActive("undo") ? "bg-mid text-light" : "bg-transparent"
         }`}
@@ -128,10 +125,8 @@ const Toolbar = ({ editor }) => {
       </button>
 
       <button
-        onClick={(e) => {
-          e.preventDefault();
-          editor.chain().focus().redo().run();
-        }}
+        onClick={() => editor.chain().focus().redo().run()}
+        disabled={!editor.can().chain().focus().redo().run()}
         className={`toolbarBtn ${
           editor.isActive("redo") ? "bg-mid text-light" : "bg-transparent"
         }`}

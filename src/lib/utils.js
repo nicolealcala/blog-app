@@ -15,3 +15,9 @@ export const connectToDb = async () => {
         throw new Error(error);
     }
 };
+
+export const createMarkup = (content) => {
+    return { __html: content };
+}
+
+export const options = { month: "long", day: "numeric", year: "numeric" };

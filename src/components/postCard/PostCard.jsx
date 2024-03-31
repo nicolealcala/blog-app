@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./postcard.module.css";
-import { createMarkup } from "@/lib/actions";
+import { options } from "@/lib/utils";
 
 const truncateContent = (content) => {
   if (content.length > 80) {
@@ -11,11 +11,9 @@ const truncateContent = (content) => {
 };
 
 const removeHtmlTags = (str) => {
-  return str.replace(/<[^>]*>/g, "");
+  return str.replace(/<[^>]*>/g, " ");
 };
 const PostCard = ({ item }) => {
-  const options = { month: "long", day: "numeric", year: "numeric" };
-
   return (
     <div className={styles.card}>
       <div className={styles.imgContainer}>
