@@ -5,31 +5,33 @@ import { connectToDb } from "./utils";
 import { signIn, signOut } from "./auth";
 import bcrypt from "bcrypt"
 
-export const addBlog = async (formData) => {
-    const { title, content, img, slug } = Object.fromEntries(formData);
+export const createMarkup = (content) => {
+    return { __html: content };
+}
+
+export const addBlog = async (title, content, img) => {
+    const slug = title.split(" ").join("-");
+    console.log(title, content, img, slug);
     try {
         connectToDb()
         const newBlog = new Blog({
             title, content, img, slug
         })
         await newBlog.save();
-        console.log(title, content, img, slug);
 
-        //In build mode, yuo cannot see changes immediately because of Next.js caching. To refetch the blogs whenever a new post is deleted:
+        //In build mode, you cannot see changes immediately because of Next.js caching. To refetch the blogs whenever a new post is deleted:
         revalidatePath("/blogs");
     } catch (err) {
         console.log(err)
         throw new Error(err);
     }
 }
-
 export const updateBlog = async (id, formData) => {
     const { title, content, img, slug } = Object.fromEntries(formData);
     try {
         connectToDb()
         await Blog.findByIdAndUpdate(id, { title, content, img, slug });
 
-        //In build mode, yuo cannot see changes immediately because of Next.js caching. To refetch the blogs whenever a new post is deleted:
         revalidatePath("/blogs");
     } catch (err) {
         console.log(err)
@@ -43,7 +45,6 @@ export const deleteBlog = async (formData) => {
         connectToDb()
         await Blog.findByIdAndDelete(id);
 
-        //In build mode, yuo cannot see changes immediately because of Next.js caching. To refetch the blogs whenever a new post is deleted:
         revalidatePath("/blogs");
     } catch (err) {
         console.log(err)

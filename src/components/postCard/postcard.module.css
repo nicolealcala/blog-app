@@ -1,33 +1,27 @@
 .card {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-}
-
-.top {
-    display: flex;
+    gap: 10px;
 }
 
 .imgContainer {
-    width: 90%;
+    min-width: 90%;
     height: 350px;
     position: relative;
 }
 
 .date {
-    width: 10%;
-    transform: rotate(-90deg);
-    margin: auto;
+    font-size: 12px;
 }
 
 .title {
-    width: 90%;
+    width: 95%;
     font-size: 24px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .desc {
-    width: 90%;
+    width: 95%;
     margin-bottom: 20px;
     font-weight: 300;
     color: var(--txt-soft);
@@ -35,6 +29,14 @@
 }
 
 .link {
-    text-decoration: underline;
+    text-decoration: none;
     color: var(--bg-mid)
+}
+
+.link:hover::after {
+    content: "";
+    width: auto;
+    margin-top: 5px;
+    height: 2px;
+    background-color: var(--bg-mid);
 }
