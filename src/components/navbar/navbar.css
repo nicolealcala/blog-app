@@ -22,18 +22,43 @@
 }
 
 .nav-link.active {
-    background-color: var(---txt-light);
     border-radius: 30px;
-    color: var(--bg-dark) !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    color: var(--bg-mid) !important;
+}
+
+.nav-link.active::after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 2px;
+    bottom: 0;
+    background-color: var(--bg-mid) !important;
 }
 
 #logOut {
     background-color: transparent;
     color: var(--txt-light);
-    border-radius: 8px;
+    border-radius: 10px;
     border: none;
-    padding-inline: 20px;
-    height: 100%;
+    padding: 8px 20px;
+}
+
+#login {
+    background-color: #fff;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 10px;
+    font-weight: 500;
+    color: var(--bg-dark);
+    transition: color 0.2s linear;
+}
+
+#login:hover {
+    color: var(--bg-mid);
 }
 
 @media screen and (max-width: 991px) {
@@ -46,6 +71,18 @@
     .nav-link.active {
         background-color: rgba(255, 255, 255, 0.1);
         border-radius: 10px;
+        display: block;
         color: var(--bg-mid) !important;
+    }
+
+    .nav-link.active::after {
+        display: none;
+    }
+
+    #login,
+    #logout {
+        display: block;
+        background-color: transparent;
+        color: var(--txt-light);
     }
 }

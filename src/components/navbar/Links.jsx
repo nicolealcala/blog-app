@@ -1,4 +1,5 @@
 import NavLink from "./NavLink";
+import Link from "next/link";
 import { logout } from "@/lib/actions";
 import "./navbar.css";
 import { auth } from "@/lib/auth";
@@ -11,9 +12,7 @@ const links = [
 ];
 
 const Links = async () => {
-  // TEMPORARY
   const session = await auth();
-  const isAdmin = true;
 
   return (
     <>
@@ -30,7 +29,7 @@ const Links = async () => {
           <hr className="d-lg-none" />
 
           <form action={logout}>
-            <button id="logOut" className="txt-weight-mid">
+            <button id="logOut" className="mx-1">
               Log out
             </button>
           </form>
@@ -38,7 +37,9 @@ const Links = async () => {
       ) : (
         <>
           <hr className="d-lg-none" />
-          <NavLink item={{ path: "/login", title: "Log in" }} />
+          <Link href="/login" id="login" className="mx-1">
+            Log in
+          </Link>
         </>
       )}
     </>
