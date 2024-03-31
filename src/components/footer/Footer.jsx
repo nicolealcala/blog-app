@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="row mx-0 pb-4">
+    <footer className="row mx-0 pb-3">
       <div className="col-md-6 txt-size-small txt-weight-mid text-md-start text-center">
         <a
           href="https://nicolealcala.github.io/"
@@ -15,7 +15,7 @@ const Footer = () => {
       <div className="col-md-6 txt-color-soft txt-size-small text-md-end text-center">
         Copyright &copy; 2024. DreamLabs. All rights reserved.
       </div>
-    </div>
+    </footer>
   );
 };
 
