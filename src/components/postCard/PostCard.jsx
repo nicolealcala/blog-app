@@ -3,9 +3,9 @@ import Image from "next/image";
 import styles from "./postcard.module.css";
 import { options } from "@/lib/utils";
 
-const truncateContent = (content) => {
-  if (content.length > 80) {
-    return content.slice(0, 80) + "...";
+const truncateContent = (content, maxLength) => {
+  if (content.length > maxLength) {
+    return content.slice(0, maxLength) + "...";
   }
   return content;
 };
@@ -29,11 +29,12 @@ const PostCard = ({ item }) => {
         <span className={styles.date}>
           {new Date(item.createdAt).toLocaleDateString("en-US", options)}
         </span>
-        <h6 className={styles.title}>{item?.title}</h6>
+        <h6 className={styles.title} title={item?.title}>
+          {truncateContent(item?.title, 50)}
+        </h6>
         <p className={styles.desc}>
-          {truncateContent(removeHtmlTags(item.content))}
+          {truncateContent(removeHtmlTags(item.content), 80)}
         </p>
-
         <Link href={`/blogs/${item?.slug}`} className={styles.link}>
           READ MORE
         </Link>
