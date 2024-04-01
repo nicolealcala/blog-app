@@ -5,18 +5,17 @@ import { options } from "@/lib/utils";
 const Author = async ({ userId, date }) => {
   // FETCH DATA WITHOUT API
   const user = await getUser(userId);
-  console.log(userId);
 
   return (
-    <div className="row mx-0 mt-3 w-100 d-flex align-items-center">
+    <div className="row mx-0 mt-3 w-100 d-flex align-items-end">
       <div
         style={{
           position: "relative",
-          width: "50px",
-          height: "50px",
+          width: "45px",
+          height: "45px",
           borderRadius: "50%",
           overflow: "hidden",
-          marginRight: "10px",
+          marginRight: "5px",
         }}
       >
         <Image
@@ -28,7 +27,7 @@ const Author = async ({ userId, date }) => {
         />
       </div>
       <div className="col-8 d-flex flex-column justify-content-center">
-        <h6 className="txt-weight-mid">{user?.username}</h6>
+        <h6 className="txt-weight-mid my-0">{user?.username}</h6>
         <p className="txt-color-soft txt-size-small my-0">
           {new Date(date).toLocaleDateString("en-US", options)}
         </p>
