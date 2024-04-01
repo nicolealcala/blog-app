@@ -20,12 +20,12 @@ const Contact = () => {
           </a>
         </div>
       </div>
-      <div className="col-lg-6 d-flex flex-column justify-content-center align-items-center py-5">
-        <h3 className="mb-4 d-lg-none txt-color-mid txt-weight-mid">
-          Contact Us
-        </h3>
+      <div className="col-lg-6 d-flex flex-column justify-content-center align-items-start py-5">
         <form action="" className="contactForm" data-bs-theme="dark">
           <div className="row mx-0">
+            <h3 className="mb-4 d-lg-none txt-color-mid txt-weight-mid">
+              Contact Us
+            </h3>
             <div className="col-md-6 mb-2">
               <label htmlFor="fName">First Name</label>
               <input
