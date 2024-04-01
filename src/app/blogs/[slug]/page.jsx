@@ -9,7 +9,6 @@ import { createMarkup } from "@/lib/utils";
 //Next.js only fetch data once even if its called by multiple functions (generateMetaData)
 export const dynamicMetadata = async ({ params }) => {
   const { slug } = params;
-
   const blog = await getBlog(slug);
 
   return {
@@ -26,15 +25,13 @@ const BlogPost = async ({ params }) => {
   if (!blog) return <NotFound />;
 
   return (
-    <div className="row mx-0 py-5">
-      <div className="col-3 d-none d-lg-flex p-0">
+    <div className="row mx-0 pt-3 pb-5">
+      <div className="col-12 d-flex p-0">
         <div className={styles.postImg}>
           <Image src={blog.img} alt="Post Image" fill className="img-cover" />
         </div>
       </div>
-      <div
-        className={`col-lg-9 d-flex flex-column justify-content-start align-items-start ${styles.content}`}
-      >
+      <div className={`col-12 pt-4 ${styles.content}`}>
         <h2>{blog.title}</h2>
         <Suspense fallback={<div>Loading...</div>}>
           <Author userId={blog.userId} date={blog.createdAt} />
