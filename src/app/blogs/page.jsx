@@ -31,16 +31,25 @@ const Blogs = async () => {
   const session = await auth();
   const user = await getUserByEmail(session.user.email);
 
-  if (!blogs)
+  if (blogs.length === 0) {
     return (
       <div>
         <h2>No posts yet.</h2>
         <p>Come back later or create a new post.</p>
+        <button
+          className="btns border-0 text-dark txt-weight-mid"
+          data-bs-toggle="modal"
+          data-bs-target="#createBlog"
+        >
+          + Create blog
+        </button>
+        <Modal userId={JSON.parse(JSON.stringify(user._id))} />
       </div>
     );
+  }
 
   return (
-    <div className="position-relative py-4 pb-0">
+    <div className="position-relative py-4">
       <div className="row mx-0 gx-5">
         <div className="col-12 col-lg-6 mb-3 d-flex align-items-center">
           <h4 className="my-0">All blogs</h4>
