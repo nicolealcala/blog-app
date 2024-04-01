@@ -14,10 +14,10 @@ export const getBlogs = async () => {
     }
 }
 
-export const getBlog = async (blogId) => {
+export const getBlog = async (slug) => {
     try {
         connectToDb();
-        const blog = await Blog.findOne({ slug: blogId });
+        const blog = await Blog.findOne({ slug });
         return blog;
     } catch (err) {
         console.log(err);
