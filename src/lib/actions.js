@@ -5,10 +5,11 @@ import { connectToDb } from "./utils";
 import { signIn, signOut } from "./auth";
 import bcrypt from "bcrypt"
 
-export const addBlog = async ({ title, content, img, userId }) => {
-    const slug = typeof title === "string" ? title.split(" ").join("-") : "";
+export const addBlog = async (prev, formData) => {
+    const { title, content, img, userId } = Object.fromEntries(formData);
+
+    const slug = typeof title === "string" ? title.replace(/[<>,!?:/\\-]/g, "").split(" ").join("-").toLowerCase() : "";
     const noImg = img.trim() ? img : "/blog.png";
-    console.log(title, content, img, userId, slug)
     try {
         connectToDb()
         const newBlog = new Blog({
@@ -21,12 +22,13 @@ export const addBlog = async ({ title, content, img, userId }) => {
         await newBlog.save();
         //In build mode, you cannot see changes immediately because of Next.js caching. To refetch the blogs whenever a new post is deleted:
         revalidatePath("/blogs");
-        return true;
+        return { success: true };
     } catch (err) {
         console.log(err)
         throw new Error(err);
     }
 }
+
 export const updateBlog = async (id, formData) => {
     const { title, content, img, slug } = Object.fromEntries(formData);
     try {
@@ -115,7 +117,6 @@ export const login = async (prevState, formData) => {
         await signIn("credentials", { email, password });
     } catch (err) {
         console.log(err);
-
         if (err.type === "CredentialsSignin") {
             return { error: "Invalid username or password" };
         }
