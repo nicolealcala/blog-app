@@ -16,7 +16,10 @@ const Toolbar = ({ editor }) => {
     return null;
   }
   return (
-    <div className="d-flex flex-wrap justify-content-between align-items-center p-2">
+    <div
+      className="d-flex flex-wrap justify-content-between align-items-center p-2"
+      style={{ backgroundColor: "var(--bg-soft)" }}
+    >
       <button
         onClick={(e) => {
           e.preventDefault();
