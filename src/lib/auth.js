@@ -47,20 +47,19 @@ export const {
     ],
     callbacks: {
         async signIn({ user, account, profile }) {
-
             if (account.provider === 'github') {
                 connectToDb()
                 try {
                     const user = await User.findOne({ email: profile.email })
 
                     if (!user) {
-                        const newAccount = new User({
+                        const newUser = new User({
                             username: profile.login,
                             email: profile.email,
                             img: profile.avatar_url,
                         })
 
-                        await newAccount.save();
+                        await newUser.save();
                     }
                 } catch (error) {
                     console.log(error)
@@ -68,7 +67,8 @@ export const {
                 }
             }
             return true;
-        }
+        },
+        ...authConfig.callbacks
     },
-    ...authConfig.callbacks
+
 })
