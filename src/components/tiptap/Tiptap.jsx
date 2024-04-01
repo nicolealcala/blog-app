@@ -11,7 +11,7 @@ const Tiptap = ({ onChange, content }) => {
     extensions: [StarterKit, Underline],
     editorProps: {
       attributes: {
-        class: "m-3 flex-grow-1",
+        class: "p-3 h-100",
         spellcheck: true,
       },
     },
@@ -21,7 +21,7 @@ const Tiptap = ({ onChange, content }) => {
   });
 
   return (
-    <div className="border rounded-2 border-secondary position-relative ">
+    <div className="border rounded-2 border-secondary position-relative content overflow-hidden">
       <EditorContent
         editor={editor}
         style={{
@@ -29,7 +29,7 @@ const Tiptap = ({ onChange, content }) => {
           position: "relative",
         }}
       />
-      <hr className="mb-0" />
+      <hr className="my-0" />
       <Toolbar editor={editor} content={content} className="toolbar" />
     </div>
   );
