@@ -1,41 +1,37 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Tiptap from "./Tiptap";
 import { addBlog } from "@/lib/actions";
+import { useFormState } from "react-dom";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 
 const Modal = ({ userId }) => {
   const [content, setContent] = useState("");
-  const [title, setTitle] = useState("");
-  const [img, setImg] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [img, setImg] = useState("");
+  const [state, setState] = useFormState(addBlog, undefined);
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const added = await addBlog({ title, content, img, userId });
-      if (added) {
-        Swal.fire({
-          title: "Success",
-          html: "<em>Blog has been posted!</em>",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 1000,
-        }).then(() => {
-          const modal = document.getElementById("createBlog");
-          modal.classList.remove("show");
-          modal.style.display = "none";
-          document.body.classList.remove("modal-open");
-          const backdrop = document.querySelector(".modal-backdrop");
-          if (backdrop) backdrop.remove();
-          router.push("/blogs");
-        });
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  useEffect(() => {
+    state?.success &&
+      Swal.fire({
+        title: "Success",
+        html: "<em>Blog has been posted!</em>",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1000,
+      }).then(() => {
+        const modal = document.getElementById("createBlog");
+        modal.classList.remove("show");
+        modal.style.display = "none";
+        document.body.classList.remove("modal-open");
+        const backdrop = document.querySelector(".modal-backdrop");
+        if (backdrop) backdrop.remove();
+        router.push("/blogs");
+      });
+  });
+
   return (
     <div
       className="modal fade"
@@ -48,11 +44,11 @@ const Modal = ({ userId }) => {
       <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div className="modal-content" style={{ height: "90vh" }}>
           <form
-            onSubmit={handleSubmit}
+            action={setState}
             className="d-flex flex-column justify-content-between h-100"
           >
             <div className="modal-header">
-              <h1 className="modal-title fs-5">Create a blog post</h1>
+              <h1 className="modal-title fs-4">Create a blog post</h1>
               <button
                 type="button"
                 className="btn-close"
@@ -71,7 +67,7 @@ const Modal = ({ userId }) => {
                     type="text"
                     className="form-control border border-secondary"
                     name="title"
-                    onChange={(e) => setTitle(e.target.value)}
+                    // onChange={(e) => setTitle(e.target.value)}
                     required
                   />
                 </div>
@@ -82,7 +78,7 @@ const Modal = ({ userId }) => {
                     className="form-control border border-secondary"
                     name="img"
                     placeholder="https://example.com/image.png"
-                    onChange={(e) => setImg(e.target.value)}
+                    // onChange={(e) => setImg(e.target.value)}
                   />
                 </div>
                 <div className="col-12 mt-3 h-100">
@@ -94,6 +90,7 @@ const Modal = ({ userId }) => {
                     onChange={(c) => setContent(c)}
                     name="content"
                   />
+                  <input type="hidden" name="content" value={content} />
                 </div>
               </div>
             </div>
@@ -108,7 +105,7 @@ const Modal = ({ userId }) => {
               <button
                 type="submit"
                 className="btn btn-primary"
-                disabled={!(content && title)}
+                disabled={!content}
               >
                 Publish
               </button>
