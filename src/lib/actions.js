@@ -1,6 +1,6 @@
 "use server"
 import { revalidatePath } from "next/cache";
-import { Blog, User } from "./models";
+import { Blog, User, Comment } from "./models";
 import { connectToDb } from "./utils";
 import { signIn, signOut } from "./auth";
 import bcrypt from "bcrypt"
@@ -51,6 +51,20 @@ export const deleteBlog = async (formData) => {
         revalidatePath("/blogs");
     } catch (err) {
         console.log(err)
+        throw new Error(err);
+    }
+}
+
+export const addComment = async (formData) => {
+    const { content, userId, blogId } = Object.fromEntries(formData);
+    console.log(content, userId, blogId)
+    try {
+        connectToDb();
+        const newComment = new Comment({ content, userId, blogId })
+        await newComment.save();
+        revalidatePath("/blogs/[slug]");
+    } catch (err) {
+        console.log(err);
         throw new Error(err);
     }
 }

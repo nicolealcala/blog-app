@@ -7,6 +7,9 @@
     margin-inline: 150px;
 }
 
+.commentImg {
+    position: relative;
+}
 
 .content {
     padding-inline: 150px;

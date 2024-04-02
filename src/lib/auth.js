@@ -50,9 +50,9 @@ export const {
             if (account.provider === 'github') {
                 connectToDb()
                 try {
-                    const user = await User.findOne({ email: profile.email })
+                    const exist = await User.findOne({ email: profile.email })
 
-                    if (!user) {
+                    if (!exist) {
                         const newUser = new User({
                             username: profile.login,
                             email: profile.email,
@@ -66,6 +66,8 @@ export const {
                     return false
                 }
             }
+            const exist = await User.findOne({ email: profile.email })
+            user.id = exist.id;
             return true;
         },
         ...authConfig.callbacks

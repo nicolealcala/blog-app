@@ -1,5 +1,5 @@
 import { connectToDb } from "./utils";
-import { Blog, User } from "./models";
+import { Blog, User, Comment } from "./models";
 import { unstable_noStore as noStore } from "next/cache";
 import { notFound } from "next/navigation";
 
@@ -54,5 +54,15 @@ export const getUsers = async () => {
         return users;
     } catch (err) {
         console.log(err); throw new Error("Fetching post failed.");
+    }
+}
+
+export const getComments = async () => {
+    try {
+        connectToDb();
+        const comments = await Comment.find();
+        return comments;
+    } catch (err) {
+        console.log(err); throw new Error("Fetching comments failed.");
     }
 }

@@ -23,6 +23,7 @@ export const authConfig = {
             return session;
         },
         authorized({ auth, request }) {
+            console.log(auth)
             const user = auth?.user;
 
             const onAdminPage = request.nextUrl?.pathname.startsWith("/admin");

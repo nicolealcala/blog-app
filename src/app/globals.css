@@ -143,13 +143,17 @@ body {
 
 .inputForm input,
 .contactForm input,
-.contactForm textarea {
+.contactForm textarea,
+.commentForm textarea,
+.commentBox {
     background-color: rgba(255, 255, 255, 0.1);
+
 }
 
 .inputForm input:focus,
 .contactForm input:focus,
-.contactForm textarea:focus {
+.contactForm textarea:focus,
+.commentForm textarea:focus {
     background-color: rgba(255, 255, 255, 0.2) !important;
 }
 
