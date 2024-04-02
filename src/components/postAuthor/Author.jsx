@@ -11,11 +11,10 @@ const Author = async ({ userId, date }) => {
       <div
         style={{
           position: "relative",
-          width: "45px",
-          height: "45px",
+          width: "40px",
+          height: "40px",
           borderRadius: "50%",
           overflow: "hidden",
-          marginRight: "5px",
         }}
       >
         <Image
