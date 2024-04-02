@@ -9,6 +9,7 @@ export const authConfig = {
                 token.id = user.id;
                 token.isAdmin = user.isAdmin;
                 token.username = user.username;
+                token.img = user.img;
             }
             return token;
         },
@@ -17,10 +18,12 @@ export const authConfig = {
                 session.user.id = token.id;
                 session.user.isAdmin = token.isAdmin;
                 session.user.username = token.username;
+                session.user.img = token.img;
             }
             return session;
         },
         authorized({ auth, request }) {
+            console.log(auth)
             const user = auth?.user;
 
             const onAdminPage = request.nextUrl?.pathname.startsWith("/admin");
