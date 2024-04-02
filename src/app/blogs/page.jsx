@@ -35,15 +35,24 @@ const Blogs = async () => {
     return (
       <div>
         <h2>No posts yet.</h2>
-        <p>Come back later or create a new post.</p>
-        <button
-          className="btns border-0 text-dark txt-weight-mid"
-          data-bs-toggle="modal"
-          data-bs-target="#createBlog"
-        >
-          + Create blog
-        </button>
-        <Modal userId={JSON.parse(JSON.stringify(user._id))} />
+        {session?.user.isAdmin ? (
+          <>
+            {" "}
+            <p>Come back later or create a new post.</p>
+            <button
+              className="btns border-0 text-dark txt-weight-mid"
+              data-bs-toggle="modal"
+              data-bs-target="#createBlog"
+            >
+              + Create blog
+            </button>
+            <Modal userId={JSON.parse(JSON.stringify(user._id))} />
+          </>
+        ) : (
+          <>
+            <p>Come back later.</p>
+          </>
+        )}
       </div>
     );
   }
@@ -51,18 +60,25 @@ const Blogs = async () => {
   return (
     <div className="position-relative py-4">
       <div className="row mx-0 gx-5">
-        <div className="col-12 col-lg-6 mb-3 d-flex align-items-center">
+        <div
+          className={`col-12 mb-3 d-flex align-items-center ${
+            session?.user.isAdmin && "col-lg-6"
+          }`}
+        >
           <h4 className="my-0">All blogs</h4>
         </div>
-        <div className="d-none d-lg-flex justify-content-end col-6 mb-3">
-          <button
-            className="btns border-0 text-dark txt-weight-mid"
-            data-bs-toggle="modal"
-            data-bs-target="#createBlog"
-          >
-            + Create blog
-          </button>
-        </div>
+        {session?.user.isAdmin && (
+          <div className="d-none d-lg-flex justify-content-end col-6 mb-3">
+            <button
+              className="btns border-0 text-dark txt-weight-mid"
+              data-bs-toggle="modal"
+              data-bs-target="#createBlog"
+            >
+              + Create blog
+            </button>
+          </div>
+        )}
+
         {blogs.map((blog) => (
           <div className="col-md-6 col-lg-4 mb-4" key={blog.id}>
             <PostCard item={blog} />
