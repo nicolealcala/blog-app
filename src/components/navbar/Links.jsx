@@ -30,7 +30,7 @@ const Links = async () => {
 
           <form action={logout}>
             <button id="logOut" className="mx-1">
-              Log out | {session.user.username}
+              Log out | {session.user.username || session.user.name}
             </button>
           </form>
         </>
