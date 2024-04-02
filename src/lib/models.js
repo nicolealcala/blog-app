@@ -12,9 +12,16 @@ const blogSchema = new mongoose.Schema({
     title: { type: String, required: true },
     content: { type: String, required: true, },
     img: { type: String, default: "/blog.png" },
-    userId: { type: String, requireD: true, },
-    slug: { type: String, requireD: true, unique: true }
+    userId: { type: String, required: true, },
+    slug: { type: String, required: true, unique: true }
 }, { timestamps: true });
+
+const commentSchema = new mongoose.Schema({
+    content: { type: String, required: true },
+    userId: { type: String, required: true },
+    blogId: { type: String, required: true }
+}, { timestamps: true })
 
 export const User = mongoose.models.User || mongoose.model('User', userSchema);
 export const Blog = mongoose.models.Blog || mongoose.model('Blog', blogSchema);
+export const Comment = mongoose.models.Comment || mongoose.model('Comment', commentSchema);
