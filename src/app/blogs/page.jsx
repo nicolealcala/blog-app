@@ -1,7 +1,7 @@
 import PostCard from "@/components/postCard/PostCard";
-import Modal from "@/components/tiptap/Modal";
+import ToggleModal from "@/components/postModal/toggleModal";
 import { auth } from "@/lib/auth";
-import { getBlogs, getUserByEmail } from "@/lib/data";
+import { getBlogs } from "@/lib/data";
 
 // FETCH DATA WITH AN API
 // const getPosts = async () => {
@@ -29,7 +29,6 @@ const Blogs = async () => {
   const blogs = await getBlogs();
 
   const session = await auth();
-  const user = await getUserByEmail(session.user.email);
 
   if (blogs.length === 0) {
     return (
@@ -39,14 +38,8 @@ const Blogs = async () => {
           <>
             {" "}
             <p>Come back later or create a new post.</p>
-            <button
-              className="btns border-0 text-dark txt-weight-mid"
-              data-bs-toggle="modal"
-              data-bs-target="#createBlog"
-            >
-              + Create blog
-            </button>
-            <Modal userId={JSON.parse(JSON.stringify(user._id))} />
+            <ToggleModal userId={session?.user.id} btnName="+ Create Blog" />
+            {/* <Modal userId={JSON.parse(JSON.stringify(user._id))} /> */}
           </>
         ) : (
           <>
@@ -69,13 +62,7 @@ const Blogs = async () => {
         </div>
         {session?.user.isAdmin && (
           <div className="d-none d-lg-flex justify-content-end col-6 mb-3">
-            <button
-              className="btns border-0 text-dark txt-weight-mid"
-              data-bs-toggle="modal"
-              data-bs-target="#createBlog"
-            >
-              + Create blog
-            </button>
+            <ToggleModal userId={session?.user.id} btnName="+ Create Blog" />
           </div>
         )}
 
@@ -85,16 +72,12 @@ const Blogs = async () => {
           </div>
         ))}
       </div>
-      <button
-        className="d-flex d-lg-none bg-light rounded-pill"
+      <div
+        className="d-flex d-lg-none bg-light rounded-pill overflow-hidden"
         id="addBtn"
-        data-bs-toggle="modal"
-        data-bs-target="#createBlog"
       >
-        +
-      </button>
-      <h1></h1>
-      <Modal userId={JSON.parse(JSON.stringify(user._id))} />
+        <ToggleModal userId={session?.user.id} btnName="+" />
+      </div>
     </div>
   );
 };
