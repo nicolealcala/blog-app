@@ -5,24 +5,23 @@ import { connectToDb } from "./utils";
 import { signIn, signOut } from "./auth";
 import bcrypt from "bcrypt"
 
-export const addBlog = async (prev, formData) => {
+export const addBlog = async (formData) => {
     const { title, content, img, userId } = Object.fromEntries(formData);
 
     const slug = typeof title === "string" ? title.replace(/[<>,!?:/\\-]/g, "").split(" ").join("-").toLowerCase() : "";
-    const noImg = img.trim() ? img : "/blog.png";
+    console.log(title, content, img, userId, slug);
     try {
         connectToDb()
         const newBlog = new Blog({
             title,
             content,
-            img: noImg,
+            img: img || "/blog.png",
             userId,
             slug
         })
-        await newBlog.save();
-        //In build mode, you cannot see changes immediately because of Next.js caching. To refetch the blogs whenever a new post is deleted:
+        const savedBlog = await newBlog.save();
         revalidatePath("/blogs");
-        return { success: true };
+        return savedBlog;
     } catch (err) {
         console.log(err)
         throw new Error(err);
@@ -63,12 +62,31 @@ export const addComment = async (formData) => {
         const newComment = new Comment({ content, userId, blogId })
         await newComment.save();
         revalidatePath("/blogs/[slug]");
+        return newComment;
     } catch (err) {
         console.log(err);
         throw new Error(err);
     }
 }
 
+export const updateComment = async (prev, formData) => {
+    const { content, userId, blogId } = Object.fromEntries(formData);
+    console.log(content, userId, blogId);
+    return { success: true }
+}
+
+export const deleteComment = async (prev, id) => {
+    try {
+        connectToDb();
+        await Comment.findByIdAndDelete({ id })
+        revalidatePath("/blogs/[slug]");
+        return { success: true }
+    } catch (err) {
+        console.log(err)
+        throw new Error(err);
+    }
+
+}
 export const deleteUser = async (formData) => {
     const { id } = Object.fromEntries(formData);
     try {
