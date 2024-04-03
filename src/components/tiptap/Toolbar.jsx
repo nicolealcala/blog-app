@@ -5,118 +5,81 @@ import {
   List,
   ListOrdered,
   Heading3,
-  // Quote,
   Undo,
   Redo,
   Code,
 } from "lucide-react";
 
 const Toolbar = ({ editor }) => {
+  const buttons = [
+    {
+      action: () => editor.chain().focus().toggleBold().run(),
+      active: editor?.isActive("bold"),
+      icon: Bold,
+      label: "Bold",
+    },
+    {
+      action: () => editor.chain().focus().toggleItalic().run(),
+      active: editor?.isActive("italic"),
+      icon: Italic,
+      label: "Italic",
+    },
+    {
+      action: () => editor.chain().focus().toggleUnderline().run(),
+      active: editor?.isActive("underline"),
+      icon: Underline,
+      label: "Underline",
+    },
+    {
+      action: () => editor.chain().focus().toggleHeading({ level: 3 }).run(),
+      active: editor?.isActive("heading"),
+      icon: Heading3,
+      label: "Heading 3",
+    },
+    {
+      action: () => editor.chain().focus().toggleBulletList().run(),
+      active: editor?.isActive("bulletList"),
+      icon: List,
+      label: "Bullet List",
+    },
+    {
+      action: () => editor.chain().focus().toggleOrderedList().run(),
+      active: editor?.isActive("orderedList"),
+      icon: ListOrdered,
+      label: "Ordered List",
+    },
+    {
+      action: () => editor.chain().focus().toggleCode().run(),
+      active: editor?.isActive("code"),
+      icon: Code,
+      label: "Code",
+    },
+  ];
+
   if (!editor) {
     return null;
   }
+
   return (
     <div
       className="d-flex flex-wrap justify-content-between align-items-center p-2"
       style={{ backgroundColor: "var(--bg-soft)" }}
     >
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          editor.chain().focus().toggleBold().run();
-        }}
-        className={`toolbarBtn ${
-          editor.isActive("bold") ? "bg-mid text-light" : "bg-transparent"
-        }`}
-      >
-        <Bold className="toolbarIcon" />
-      </button>
-
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          editor.chain().focus().toggleItalic().run();
-        }}
-        className={`toolbarBtn ${
-          editor.isActive("italic") ? "bg-mid text-light" : "bg-transparent"
-        }`}
-      >
-        <Italic className="toolbarIcon" />
-      </button>
-
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          editor.chain().focus().toggleUnderline().run();
-        }}
-        className={`toolbarBtn ${
-          editor.isActive("underline") ? "bg-mid text-light" : "bg-transparent"
-        }`}
-      >
-        <Underline className="toolbarIcon" />
-      </button>
-
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          editor.chain().focus().toggleHeading({ level: 3 }).run();
-        }}
-        className={`toolbarBtn ${
-          editor.isActive("heading") ? "bg-mid text-light" : "bg-transparent"
-        }`}
-      >
-        <Heading3 className="toolbarIcon" />
-      </button>
-
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          editor.chain().focus().toggleBulletList().run();
-        }}
-        className={`toolbarBtn ${
-          editor.isActive("bulletList") ? "bg-mid text-light" : "bg-transparent"
-        }`}
-      >
-        <List className="toolbarIcon" />
-      </button>
-
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          editor.chain().focus().toggleOrderedList().run();
-        }}
-        className={`toolbarBtn ${
-          editor.isActive("orderedList")
-            ? "bg-mid text-light"
-            : "bg-transparent"
-        }`}
-      >
-        <ListOrdered className="toolbarIcon" />
-      </button>
-
-      {/* <button
-        onClick={(e) => { e.preventDefault()
-          editor.chain().focus().toggleBlockquote().run();
-        }}
-        className={`toolbarBtn ${
-          editor.isActive("blockquote") ? "bg-mid text-light" : "bg-transparent"
-        }`}
-      >
-        <Quote className="toolbarIcon" />
-      </button> */}
-
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          editor.chain().focus().toggleCode().run();
-        }}
-        className={`toolbarBtn ${
-          editor.isActive("code") ? "bg-mid text-light" : "bg-transparent"
-        }`}
-      >
-        <Code className="toolbarIcon" />
-      </button>
-
+      {buttons.map((button, index) => (
+        <button
+          key={index}
+          onClick={(e) => {
+            e.preventDefault();
+            button.action();
+          }}
+          disabled={button.disabled}
+          className={`toolbarBtn ${
+            button.active ? "bg-mid text-light" : "bg-transparent"
+          }`}
+        >
+          <button.icon className="toolbarIcon" />
+        </button>
+      ))}
       <button
         onClick={() => editor.chain().focus().undo().run()}
         disabled={!editor.can().chain().focus().undo().run()}
@@ -126,7 +89,6 @@ const Toolbar = ({ editor }) => {
       >
         <Undo className="toolbarIcon" />
       </button>
-
       <button
         onClick={() => editor.chain().focus().redo().run()}
         disabled={!editor.can().chain().focus().redo().run()}
