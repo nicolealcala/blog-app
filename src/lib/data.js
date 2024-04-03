@@ -57,10 +57,10 @@ export const getUsers = async () => {
     }
 }
 
-export const getComments = async () => {
+export const getComments = async (blogId) => {
     try {
         connectToDb();
-        const comments = await Comment.find();
+        const comments = await Comment.find({ blogId });
         return comments;
     } catch (err) {
         console.log(err); throw new Error("Fetching comments failed.");
