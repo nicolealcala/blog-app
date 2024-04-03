@@ -61,16 +61,16 @@ export const {
 
                         await newUser.save();
                     }
+                    user.id = exist.id;
+                    user.isAdmin = exist.isAdmin;
+                    user.username = exist.username;
                 } catch (error) {
                     console.log(error)
                     return false
                 }
             }
-            const exist = await User.findOne({ email: profile.email })
-            user.id = exist.id;
             return true;
         },
         ...authConfig.callbacks
     },
-
 })
