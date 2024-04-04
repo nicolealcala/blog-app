@@ -62,7 +62,7 @@ const Toolbar = ({ editor }) => {
 
   return (
     <div
-      className="d-flex flex-wrap justify-content-between align-items-center p-2"
+      className="d-flex flex-wrap justify-content-evenly align-items-center p-2"
       style={{ backgroundColor: "var(--bg-soft)" }}
     >
       {buttons.map((button, index) => (
