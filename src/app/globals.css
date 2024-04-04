@@ -5,7 +5,8 @@
     --bg-mid: #f41afd;
     --bg-soft: #2d2a3f;
     --txt-light: #DEE2E6;
-    --txt-soft: #909090;
+    --txt-soft: #AEAEAE;
+    --yellow: #FFC107;
 }
 
 * {
@@ -63,6 +64,10 @@ body {
     font-weight: 600;
 }
 
+.txt-weight-light {
+    font-weight: 300;
+}
+
 .txt-size-large {
     font-size: 5rem;
 }
@@ -76,33 +81,37 @@ body {
 }
 
 .btns {
-    border-radius: 10px;
+    /* border-radius: 10px;
     padding: 10px 15px;
     color: var(--txt-light);
     text-decoration: none;
-    background-color: white;
+    background-color: white; */
     transition: color 0.2s linear;
 }
 
 .primary-btn {
+    color: var(--txt-light) !important;
     background: linear-gradient(90deg, rgba(213, 26, 253, 1) 0%, rgba(246, 1, 181, 1) 100%);
     border: 1px solid var(--bg-mid);
 }
 
-.primary-btn:enabled:hover {
-    color: var(--bg-soft);
+.primary-btn:hover {
+    color: var(--bg-soft) !important;
 }
 
 .secondary-btn {
+    color: var(--txt-light) !important;
     background: transparent;
-    border: 1px solid var(--bg-mid);
+    border: 1px solid var(--txt-light) !important;
 }
 
-.secondary-btn:enabled:hover {
-    color: var(--bg-mid);
+.secondary-btn:hover {
+    color: var(--yellow) !important;
+    border-color: var(--yellow) !important;
 }
 
-.btns:disabled {
+.primary-btn:disabled,
+.secondary-btn:disabled {
     opacity: 0.7;
 }
 
@@ -115,6 +124,27 @@ body {
 
 #github:hover {
     color: var(--bg-mid);
+}
+
+.link {
+    position: relative;
+    text-decoration: none;
+    color: var(--bg-mid);
+}
+
+.link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0px;
+    height: 3px;
+    background-color: var(--bg-mid);
+    transition: width 0.2s;
+}
+
+.link:hover::after {
+    width: 100%;
 }
 
 .required::after {
@@ -133,7 +163,8 @@ body {
     color: var(--bg-mid);
 }
 
-.inputForm {
+.inputForm,
+.postBody {
     backdrop-filter: blur(3px) saturate(200%);
     -webkit-backdrop-filter: blur(3px) saturate(200%);
     background-color: rgba(255, 255, 255, 0.1);
@@ -141,11 +172,19 @@ body {
     border: 1px solid rgba(209, 213, 219, 0.3);
 }
 
+.postBody {
+    backdrop-filter: blur(5px) saturate(150%);
+    -webkit-backdrop-filter: blur(3px) saturate(150%);
+    border: none;
+    border-radius: 0 0 10px 10px;
+}
+
 .inputForm input,
 .contactForm input,
 .contactForm textarea,
+.commentForm input,
 .commentForm textarea,
-.commentBox {
+.form-control.commentBox {
     background-color: rgba(255, 255, 255, 0.1);
 
 }
@@ -153,22 +192,9 @@ body {
 .inputForm input:focus,
 .contactForm input:focus,
 .contactForm textarea:focus,
-.commentForm textarea:focus {
+.commentForm textarea:focus,
+.commentForm input {
     background-color: rgba(255, 255, 255, 0.2) !important;
-}
-
-#addBtn {
-    position: absolute;
-    padding: auto auto;
-    bottom: 30px;
-    right: 10px;
-    width: 50px;
-    height: 50px;
-    border: none;
-    color: var(--bg-dark);
-    font-size: 1.8rem;
-    font-family: "Poppins";
-    font-weight: 500;
 }
 
 .toolbarBtn {
@@ -191,7 +217,13 @@ body {
 }
 
 .ProseMirror {
-    min-height: calc(100vh - 430px);
+    height: calc(100vh - 500px);
+    /* max-height: calc(100vh - 450px); */
+    overflow-y: auto;
+}
+
+.autoHeight {
+    height: auto;
 }
 
 @media screen and (max-width: 768px) {
@@ -202,6 +234,10 @@ body {
 
     .txt-size-large {
         font-size: 4.5rem;
+    }
+
+    .ProseMirror {
+        min-height: calc(100vh - 600px);
     }
 }
 
