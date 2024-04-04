@@ -29,24 +29,3 @@
     color: var(--txt-soft);
     white-space: pre-line;
 }
-
-.link {
-    position: relative;
-    text-decoration: none;
-    color: var(--bg-mid);
-}
-
-.link::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 0px;
-    height: 3px;
-    background-color: var(--bg-mid);
-    transition: width 0.2s;
-}
-
-.link:hover::after {
-    width: 100%;
-}

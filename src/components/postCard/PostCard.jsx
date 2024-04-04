@@ -35,7 +35,7 @@ const PostCard = ({ item }) => {
         <p className={styles.desc}>
           {truncateContent(removeHtmlTags(item.content), 80)}
         </p>
-        <Link href={`/blogs/${item?.slug}`} className={styles.link}>
+        <Link href={`/blogs/${item?.slug}`} className="link">
           READ MORE
         </Link>
       </div>
