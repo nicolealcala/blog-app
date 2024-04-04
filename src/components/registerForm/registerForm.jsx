@@ -101,17 +101,14 @@ const RegisterForm = () => {
         <div className="col-12 mt-3">
           <button
             type="submit"
-            className="btns primary-btn w-100 txt-weight-mid"
+            className="btn primary-btn w-100 txt-weight-mid py-2"
           >
             Register
           </button>
         </div>
         <p className="text-center mt-3 text-muted mt-4">
           Already have an account?{" "}
-          <Link
-            href="/login"
-            className="txt-color-mid txt-weight-mid text-decoration-none"
-          >
+          <Link href="/login" className="txt-weight-mid link">
             Log in
           </Link>
         </p>

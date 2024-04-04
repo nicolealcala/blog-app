@@ -66,7 +66,7 @@ const LoginForm = () => {
           <div className="col-12 my-3">
             <button
               type="submit"
-              className="btns primary-btn w-100 txt-weight-mid"
+              className="btn primary-btn w-100 txt-weight-mid py-2"
             >
               Sign in
             </button>
@@ -80,7 +80,7 @@ const LoginForm = () => {
       </div>
       <form action={githubLogin} style={{ padding: "10px" }}>
         <button
-          className="btns d-flex justify-content-center align-items-center"
+          className="btn d-flex justify-content-center align-items-center py-2"
           id="githubBtn"
         >
           <Image
@@ -95,10 +95,7 @@ const LoginForm = () => {
       </form>
       <div className="col-12 d-flex justify-content-center mt-4">
         New user? &nbsp;
-        <Link
-          href="/register"
-          className="txt-color-mid txt-weight-mid text-decoration-none"
-        >
+        <Link href="/register" className="txt-weight-mid link">
           Register
         </Link>
       </div>

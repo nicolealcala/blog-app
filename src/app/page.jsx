@@ -16,10 +16,10 @@ const Home = () => {
         </p>
 
         <div className="py-2">
-          <Link href="/about" className="btns primary-btn me-3">
+          <Link href="/about" className="btn primary-btn me-3">
             Learn More
           </Link>
-          <Link href="/contact" className="btns secondary-btn ms-2">
+          <Link href="/contact" className="btn secondary-btn ms-2">
             Contact Us
           </Link>
         </div>
