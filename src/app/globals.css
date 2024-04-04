@@ -164,7 +164,8 @@ body {
 }
 
 .inputForm,
-.postBody {
+.postBody,
+.createForm {
     backdrop-filter: blur(3px) saturate(200%);
     -webkit-backdrop-filter: blur(3px) saturate(200%);
     background-color: rgba(255, 255, 255, 0.1);

@@ -1,3 +1,4 @@
+import AdminForm from "@/components/adminControls/adminForm";
 import { addBlog } from "@/lib/actions";
 
 export const metadata = {
@@ -7,14 +8,11 @@ export const metadata = {
 
 const Admin = () => {
   return (
-    <div>
-      <form action={addBlog}>
-        <input type="text" name="title" />
-        <input type="text" name="content" />
-        <input type="text" name="slug" />
-        <input type="file" name="img" />
-        <button type="submit">Create</button>
-      </form>
+    <div className="row mx-0">
+      <div className="col-12 col-lg-6"></div>
+      <div className="col-12 col-lg-6">
+        <AdminForm />
+      </div>
     </div>
   );
 };
