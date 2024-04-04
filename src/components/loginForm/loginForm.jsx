@@ -20,7 +20,7 @@ const LoginForm = () => {
       data-bs-theme="dark"
       style={{ maxWidth: "450px" }}
     >
-      <form action={setLoginState} method="post">
+      <form action={setLoginState}>
         <h2 className="text-center txt-weight-mid mb-3">Sign in</h2>
 
         <div className="row mx-0 gy-3">

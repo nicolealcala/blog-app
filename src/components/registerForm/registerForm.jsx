@@ -21,7 +21,6 @@ const RegisterForm = () => {
     <form
       action={setRegistrationState}
       data-bs-theme="dark"
-      method="post"
       className="pt-5 pb-4 px-4 rounded-4 align-self-center inputForm"
       style={{ maxWidth: "450px" }}
     >
