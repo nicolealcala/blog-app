@@ -11,7 +11,7 @@ const Tiptap = ({ onChange, content }) => {
     extensions: [StarterKit, Underline],
     editorProps: {
       attributes: {
-        class: "p-3 h-100",
+        class: "p-3",
         spellcheck: true,
       },
     },
@@ -26,7 +26,6 @@ const Tiptap = ({ onChange, content }) => {
         editor={editor}
         style={{
           whiteSpace: "pre-line",
-          position: "relative",
         }}
       />
       <hr className="my-0" />
