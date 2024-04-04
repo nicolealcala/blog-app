@@ -8,7 +8,7 @@ import { createMarkup } from "@/lib/utils";
 import { deleteBlog } from "@/lib/actions";
 import { auth } from "@/lib/auth";
 import CommentForm from "@/components/comments/commentForm";
-import CommentBox from "@/components/comments/comment";
+import CommentBox from "@/components/comments/commentBox";
 
 //Next.js only fetch data once even if its called by multiple functions (generateMetaData)
 export const dynamicMetadata = async ({ params }) => {
