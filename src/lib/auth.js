@@ -11,14 +11,13 @@ const credentialsLogIn = async (credentials) => {
         connectToDb()
         const user = await User.findOne({ email: credentials.email });
 
-        if (!user) throw new Error("User not found. Create an accout to continue.")
+        if (!user) throw new Error("User not found. Create an account to continue.")
 
         const passwordMatch = await bcrypt.compare(credentials.password, user.password)
         if (!passwordMatch) throw new Error("Incorrect password.")
 
         return user;
     } catch (err) {
-        console.log(err)
         throw new Error("Failed to log in");
     }
 }
@@ -65,7 +64,6 @@ export const {
                     user.isAdmin = exist.isAdmin;
                     user.username = exist.username;
                 } catch (error) {
-                    console.log(error)
                     return false
                 }
             }
